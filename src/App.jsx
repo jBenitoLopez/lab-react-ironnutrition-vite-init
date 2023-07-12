@@ -1,4 +1,5 @@
 import "./App.css"
+import AddFoodForm from './components/AddFoodForm'
 import FoodBox from './components/FoodBox'
 import foodsJson from "./foods.json"
 import React, { useState } from 'react'
@@ -12,9 +13,14 @@ function App() {
     setFoods(newList);
   }
 
-  console.log('foods :>> ', foods)
+  const handleInsertFood = (food) => {
+    const newList = [...foods, food]
+    setFoods(newList);
+  }
+
   return (
     <div className="App">
+      <AddFoodForm  handleInsert={handleInsertFood} />
       <h1>LAB | React IronNutrition</h1>
       {
         foods.map((food) => <FoodBox key={food.id} food={food} handleDelete={handleDeleteItem} />)
