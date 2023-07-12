@@ -3,9 +3,9 @@ import React, { useState } from 'react'
 const foodInit = {
   'id': '',
   'name': '',
-  'calories': 0,
+  'calories': '',
   'image': '',
-  'servings': 0
+  'servings': ''
 }
 
 function AddFoodForm({handleInsert}) {
@@ -15,6 +15,7 @@ function AddFoodForm({handleInsert}) {
 
   return (
     <div className='mt-5'>
+      <h2 className='text-3xl font-bold m-6'>Add New Food</h2>
       <form className='form'>
 
         <div className="form-control">
@@ -45,7 +46,7 @@ function AddFoodForm({handleInsert}) {
           </label>
         </div>
 
-        <button className="btn btn-primary" onClick={(e) => {e.preventDefault(); return handleInsert({...food, id:new Date().toString()})}}>Create</button>
+        <button className="btn btn-primary" onClick={(e) => {e.preventDefault(); return handleInsert({...food, id:new Date().toString()})}}>Add Food</button>
 
       </form>
     </div>

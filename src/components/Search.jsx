@@ -1,21 +1,12 @@
-import React, { useState } from 'react'
-
-function Search() {
-  const  [query, setQuery] = useState('');
-
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setQuery(value);
-    
-    console.log('value :>> ', value);
-  }
+function Search({ handlerFilter }) {
   return (
     <div>
-        <div className="form-control">
-          <label className="input-group">
-            <input type="text" className="input input-bordered w-96" onChange={handleChange} value={query} />
-          </label>
-        </div>
+      <h2 className='text-3xl font-bold m-6'>Filter Food</h2>
+      <div className="form-control">
+        <label className="input-group">
+          <input type="text" className="input input-bordered w-96" onChange={(e) => handlerFilter(e.target.value)} />
+        </label>
+      </div>
 
     </div>
   )
