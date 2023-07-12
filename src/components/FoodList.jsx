@@ -6,33 +6,47 @@ import Search from './Search'
 
 function FoodList() {
   const [foods, setFoods] = useState([...foodsJson])
+  const [foodsFiltered, setFoodsFiltered] = useState([...foods])
 
+  const updateFoodsData = (foodsData) => {
+    setFoods(foodsData)
+    setFoodsFiltered(foodsData)
+  }
   const handleDeleteItem = (id) => {
-    const newList = foods.filter((food) => food.id !== id)
-    setFoods(newList)
+    const foodsData = foods.filter((food) => food.id !== id)
+    updateFoodsData(foodsData)
   }
 
   const handleInsertFood = (food) => {
-    const newList = [food, ...foods]
-    setFoods(newList)
+    const foodsData = [food, ...foods]
+    updateFoodsData(foodsData)
   }
 
-  const handlerFilterFoods = (query) => {
-    setInterval(() => {
-      const newList = foods.filter((food) => food.name.includes(query))
-      setFoods()
-    }, 400);
-    
+  const handlerFilterFoods = (searchInput) => {
+    setFoodsFiltered([...foods])
+
+    if (searchInput.length > 1) {
+        const filteredData = foods.filter((food) => {
+          return Object.values(food)
+            .join('').toLowerCase()
+            .includes(searchInput.toLowerCase())
+        })
+        setFoodsFiltered(filteredData)
+    }
+
   }
 
   return (
     <div>
-      <h2 className='text-3xl font-bold m-6'>Search</h2>
-      <Search handlerFilter={handlerFilterFoods} />
-      <h2 className='text-3xl font-bold m-6'>Food List</h2>
       <AddFoodForm handleInsert={handleInsertFood} />
+      <Search handlerFilter={handlerFilterFoods} />
+      <h2 className='text-3xl font-bold m-6'>List of Foods</h2>
       {
-        foods.map((food) => <FoodBox key={food.id} food={food} handleDelete={handleDeleteItem} />)
+        foodsFiltered.map((food) => <FoodBox
+          key={food.id}
+          food={food}
+          handleDelete={handleDeleteItem}
+        />)
       }
     </div>
   )
