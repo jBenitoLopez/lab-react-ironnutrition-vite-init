@@ -41,7 +41,7 @@ function FoodList() {
     <div>
       <AddFoodForm handleInsert={handleInsertFood} />
       <Search handlerFilter={handlerFilterFoods} />
-      <h2 className='text-3xl font-bold m-6'>List of Foods</h2>
+      <h2 className='text-4xl font-bold mt-16 mb-8'>List of Foods</h2>
       {
         foodsFiltered.length > 0 
         ? foodsFiltered.map((food) => <FoodBox

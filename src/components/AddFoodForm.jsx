@@ -15,7 +15,7 @@ function AddFoodForm({handleInsert}) {
 
   return (
     <div className='mt-5'>
-      <h2 className='text-3xl font-bold m-6'>Add New Food</h2>
+      <h2 className='text-4xl font-bold mt-16 mb-8'>Add New Food</h2>
       <form className='form'>
 
         <div className="form-control">

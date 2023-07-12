@@ -6,7 +6,7 @@ function FoodBox({ food, handleDelete }) {
 
   return (
     <div className='m-5'>
-      <h2 className='text-3xl font-bold m-6'>{name}</h2>
+      <h3 className='text-3xl font-bold mt-16 mb-8'>{name}</h3>
       <img className='mx-auto object-cover h-48' src={image} />
       <p className='text-lg mt-4'>Calories: {calories}</p>
       <p className='text-lg mt-2'>Servings {servings}</p>
