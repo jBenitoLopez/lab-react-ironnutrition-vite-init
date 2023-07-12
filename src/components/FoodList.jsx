@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import AddFoodForm from './AddFoodForm'
 import FoodBox from './FoodBox'
 import Search from './Search'
+import NoContent from './NoContent'
 
 function FoodList() {
   const [foods, setFoods] = useState([...foodsJson])
@@ -42,11 +43,13 @@ function FoodList() {
       <Search handlerFilter={handlerFilterFoods} />
       <h2 className='text-3xl font-bold m-6'>List of Foods</h2>
       {
-        foodsFiltered.map((food) => <FoodBox
+        foodsFiltered.length > 0 
+        ? foodsFiltered.map((food) => <FoodBox
           key={food.id}
           food={food}
-          handleDelete={handleDeleteItem}
+          handleDelete={handleDeleteItem} 
         />)
+        : <NoContent />
       }
     </div>
   )
