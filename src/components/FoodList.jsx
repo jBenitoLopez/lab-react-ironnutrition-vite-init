@@ -13,14 +13,22 @@ function FoodList() {
   }
 
   const handleInsertFood = (food) => {
-    const newList = [...foods, food]
+    const newList = [food, ...foods]
     setFoods(newList)
+  }
+
+  const handlerFilterFoods = (query) => {
+    setInterval(() => {
+      const newList = foods.filter((food) => food.name.includes(query))
+      setFoods()
+    }, 400);
+    
   }
 
   return (
     <div>
       <h2 className='text-3xl font-bold m-6'>Search</h2>
-      <Search />
+      <Search handlerFilter={handlerFilterFoods} />
       <h2 className='text-3xl font-bold m-6'>Food List</h2>
       <AddFoodForm handleInsert={handleInsertFood} />
       {
