@@ -49,17 +49,19 @@ function FoodList() {
       </div>
 
       <div>
-            <h2 className='text-4xl font-bold mt-16 mb-8'></h2>
-            {
-              foodsFiltered.length > 0
-                ? foodsFiltered.map((food) => <FoodBox
-                  key={food.id}
-                  food={food}
-                  handleDelete={handleDeleteItem}
-                />)
-                : <NoContent />
-            }
-          </div>
+        <h2 className='text-4xl font-bold mt-16 mb-8'></h2>
+        <div className='flex flex-wrap justify-evenly'>
+          {
+            foodsFiltered.length > 0
+              ? foodsFiltered.map((food) => <FoodBox
+                key={food.id}
+                food={food}
+                handleDelete={handleDeleteItem}
+              />)
+              : <NoContent />
+          }
+        </div>
+      </div>
     </>
   )
 }

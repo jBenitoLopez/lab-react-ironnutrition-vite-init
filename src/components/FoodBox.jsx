@@ -5,17 +5,22 @@ function FoodBox({ food, handleDelete }) {
   const { id, name, calories, image, servings } = food
 
   return (
-    <div className='m-5'>
-      <h3 className='text-3xl font-bold mt-16 mb-8'>{name}</h3>
-      <img className='mx-auto object-cover h-48' src={image} />
-      <p className='text-lg mt-4'>Calories: {calories}</p>
-      <p className='text-lg mt-2'>Servings {servings}</p>
-      <p className='mt-4'>
-        <b>Total Calories: {servings * calories}</b> kcal
-      </p>
-      <button className='text-2xl font-bold mt-4' onClick={() => handleDelete(id)}>Delete</button>
-      <hr className='m-5' />
+    <div className="card w-80 glass m-4">
+      <figure><img className='object-fill h-48 w-96' src={image} alt={name}/></figure>
+      <div className="card-body">
+        <h2 className="card-title">{name}</h2>
+        <p>Calories: {calories}</p>
+        <p>Servings {servings}</p>
+        <p><b>Total Calories: {servings * calories}</b> kcal</p>
+        <div className="card-actions justify-end">
+          <button className="">Buy Now</button>
+          <button className='btn btn-primary' onClick={() => handleDelete(id)}>Delete</button>
+
+        </div>
+      </div>
     </div>
+
+
   )
 }
 
