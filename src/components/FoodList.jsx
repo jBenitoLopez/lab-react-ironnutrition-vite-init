@@ -27,31 +27,40 @@ function FoodList() {
     setFoodsFiltered([...foods])
 
     if (searchInput.length > 1) {
-        const filteredData = foods.filter((food) => {
-          return Object.values(food)
-            .join('').toLowerCase()
-            .includes(searchInput.toLowerCase())
-        })
-        setFoodsFiltered(filteredData)
+      const filteredData = foods.filter((food) => {
+        return Object.values(food)
+          .join('').toLowerCase()
+          .includes(searchInput.toLowerCase())
+      })
+      setFoodsFiltered(filteredData)
     }
 
   }
 
   return (
-    <div>
+    <>
       <AddFoodForm handleInsert={handleInsertFood} />
       <Search handlerFilter={handlerFilterFoods} />
-      <h2 className='text-4xl font-bold mt-16 mb-8'>List of Foods</h2>
-      {
-        foodsFiltered.length > 0 
-        ? foodsFiltered.map((food) => <FoodBox
-          key={food.id}
-          food={food}
-          handleDelete={handleDeleteItem} 
-        />)
-        : <NoContent />
-      }
-    </div>
+
+      <div className='mt-8 mx-5 relative flex flex-col text-sky-400/100 justify-center overflow-hidden'>
+        <div className='w-full m-auto bg-white rounded-md shadow-md'>
+          <h2 className='text-4xl font-bold m-4'>List of Foods</h2>
+        </div>
+      </div>
+
+      <div>
+            <h2 className='text-4xl font-bold mt-16 mb-8'></h2>
+            {
+              foodsFiltered.length > 0
+                ? foodsFiltered.map((food) => <FoodBox
+                  key={food.id}
+                  food={food}
+                  handleDelete={handleDeleteItem}
+                />)
+                : <NoContent />
+            }
+          </div>
+    </>
   )
 }
 
